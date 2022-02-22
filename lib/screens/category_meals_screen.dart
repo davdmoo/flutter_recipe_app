@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
-import "./dummy_data.dart";
+import '../dummy_data.dart';
+import "../widgets/meal_item.dart";
 
 class CategoryMealsScreen extends StatelessWidget {
   static const routeName = "/category-meals"; // a property which can be accessed without instantiating the class
@@ -23,7 +24,14 @@ class CategoryMealsScreen extends StatelessWidget {
         title: Text(categoryTitle),
       ),
       body: ListView.builder(itemBuilder: (ctx, index) {
-        return Text(categoryMeals[index].name);
+        return MealItem(
+          id: categoryMeals[index].id,
+          name: categoryMeals[index].name,
+          imageUrl: categoryMeals[index].imageUrl,
+          duration: categoryMeals[index].duration,
+          complexity: categoryMeals[index].complexity,
+          affordability: categoryMeals[index].affordability,
+        );
       },
       itemCount: categoryMeals.length,
       ),
